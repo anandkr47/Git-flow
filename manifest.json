@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Code Flowchart Generator",
+  "version": "1.0.0",
+  "description": "Automatically generates interactive flowcharts from code on GitHub",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["dist/content.js"],
+      "css": ["styles/flowchart.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "dist/background.js"
+  }
+}
